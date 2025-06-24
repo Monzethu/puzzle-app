@@ -12,7 +12,9 @@ return new class extends Migration {
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20); // アイテム名
+            $table->string('name', 30); // アイテム名
+            $table->string('type', 30); // 種類
+            $table->string('explanation', 30);
             $table->timestamps();
         });
     }

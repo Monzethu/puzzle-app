@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -34,18 +35,6 @@ class AuthController extends Controller
         } else {
             return redirect()->view('/', ['error' => 'invalid']);
         }
-
-//        // nameが"jobi"かつpasswordが"jobi"の時アカウント一覧へリダイレクト
-//        if ($name === 'jobi' && $password === 'jobi') {
-//            return redirect('accounts/index');
-//        } else {
-//            $title = 'ログイン';
-//            $error = 'ユーザー名またはパスワードが違います';
-//            return view('accounts/login', [
-//                'title' => $title,
-//                'error' => $error
-//            ]);
-//        }
     }
 
     public function logout()

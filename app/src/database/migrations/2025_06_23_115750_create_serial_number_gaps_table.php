@@ -8,14 +8,11 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('serial_number_gaps', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);   //nameカラム(20文字)
-            $table->integer('level');
-            $table->integer('exp');
-            $table->integer('life');
+            $table->unsignedInteger('serial_number')->unique();
             $table->timestamps();
         });
     }
@@ -23,8 +20,8 @@ return new class extends Migration {
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('serial_number_gaps');
     }
 };

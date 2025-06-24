@@ -9,5 +9,17 @@ class Item extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id',];
+    protected $fillable = [
+        'name',
+        'type',
+        'explanation',
+        'serial_number',
+    ];
+
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_item');
+    }
 }
+

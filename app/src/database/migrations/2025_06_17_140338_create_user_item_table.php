@@ -10,12 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user_item', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);   //nameカラム(20文字)
-            $table->integer('level');
-            $table->integer('exp');
-            $table->integer('life');
+            $table->integer('user_id');// ユーザーID
+            $table->integer('item_id');// アイテムID
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user_item');
     }
 };

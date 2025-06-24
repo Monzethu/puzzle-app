@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Item;
+use App\Models\User;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class AccountController extends Controller
 {
@@ -12,9 +15,9 @@ class AccountController extends Controller
     public function index(Request $request)
     {
         //テーブルの全てのレコードを取得
-        $accounts = Account::All();
+        //$accounts = Account::All();
 
-        $title = 'アカウント一覧';
+        //$title = 'アカウント一覧';
 
 //        //idで検索,見つからなかったら404エラー
 //        $account = Account::findOrFail(1);
@@ -33,31 +36,24 @@ class AccountController extends Controller
         return view('accounts/home');
     }
 
-    public function score(Request $request)
-    {
-        $score = [
-            ['name' => 'テストさん', 'score' => 100],
-            ['name' => 'jobi', 'score' => 50],
-        ];
-
-        return view('accounts/score', ['scores' => $score]);
-    }
-
     public function user(Request $request)
     {
-        $title = 'アカウント一覧';
+        //テーブルの全てのレコードを取得
+        $accounts = Account::All();// jobi jobi
+        //$users = User::All();
+        $users = User::simplePaginate(10);
 
-        $data = [
-            [
-                'name' => 'テストさん',
-                'password' => '$3$3kdiei2',
-            ],
-            [
-                'name' => 'jobi',
-                'password' => '$9$s#2kdie',
-            ]
-        ];
+//        $data = [
+//            [
+//                'name' => 'テストさん',
+//                'password' => '$3$3kdiei2',
+//            ],
+//            [
+//                'name' => 'jobi',
+//                'password' => '$9$s#2kdie',
+//            ]
+//        ];
 
-        return view('accounts/index', ['title' => $title, 'accounts' => $data]);
+        return view('users/index', ['accounts' => $users]);
     }
 }

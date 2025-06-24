@@ -15,10 +15,10 @@
         </tr>
     @endforeach
 </table>
-<form method="post" action="{{url('logout')}}">
-    @csrf
-    <button type="submit">ログアウト</button>
-</form>
+{{--<form method="post" action="{{url('logout')}}">--}}
+{{--    @csrf--}}
+{{--    <button type="submit">ログアウト</button>--}}
+{{--</form>--}}
 <a href="{{url('home')}}">ホームに戻る</a>
 </body>
 </html>

@@ -10,13 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 20);   //nameカラム(20文字)
-            $table->integer('level');
-            $table->integer('exp');
-            $table->integer('life');
-            $table->timestamps();
+        Schema::table('items', function (Blueprint $table) {
+            $table->unsignedInteger('serial_number')->unique()->nullable()->after('explanation');
         });
     }
 
@@ -25,6 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::table('items', function (Blueprint $table) {
+            $table->dropColumn('serial_number');
+        });
     }
 };
