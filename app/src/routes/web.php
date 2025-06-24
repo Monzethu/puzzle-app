@@ -21,6 +21,8 @@ Route::get('home', [AccountController::class, 'index']);// TOP
 // ユーザー
 Route::get('user', [UserController::class, 'user']);
 
+Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');// ユーザー詳細
+
 //アイテム
 Route::prefix('items')->name('items.')->controller(ItemController::class)
     //->middleware(AuthController::class)

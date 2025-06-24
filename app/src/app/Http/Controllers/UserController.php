@@ -28,4 +28,11 @@ class UserController extends Controller
 
         return view('users/index', ['accounts' => $users]);
     }
+
+    // ユーザー詳細
+    public function show($id)
+    {
+        $user = User::with('items')->findOrFail($id);
+        return view('users.show', compact('user'));
+    }
 }

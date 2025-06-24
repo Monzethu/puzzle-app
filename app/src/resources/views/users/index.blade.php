@@ -14,8 +14,8 @@
     </thead>
     @foreach ($accounts as $user)
         <tr>
-            <td>{{ $user['id'] }}</td>
-            <td>{{ $user['name'] }}</td>
+            <td><a href="{{ route('users.show', $user->id) }}">{{ $user->id }}</a></td>
+            <td><a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a></td>
             <td>{{ $user['level'] }}</td>
             <td>{{ $user['exp'] }}</td>
             <td>{{ $user['life'] }}</td>
